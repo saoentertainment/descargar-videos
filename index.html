@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Completa yt-dlp | Javi SAO</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #1a1a1a;
+    color: #f0f0f0;
+    line-height: 1.7;
+    padding-bottom: 60px;
+  }
+  
+  header {
+    background: linear-gradient(135deg, #8B0000 0%, #1a1a1a 100%);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 4px solid #D4AF37;
+    position: relative;
+  }
+  
+  header h1 {
+    color: #D4AF37;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+  }
+  
+  header p {
+    color: #f0f0f0;
+    font-size: 1.1em;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* MENÚ INTERACTIVO */
+  nav.menu {
+    background: #2a2a2a;
+    border: 2px solid #D4AF37;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 0;
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(212,175,55,0.2);
+  }
+  
+  nav.menu h2 {
+    color: #D4AF37;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    text-align: center;
+  }
+  
+  nav.menu ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  
+  nav.menu a {
+    color: #f0f0f0;
+    text-decoration: none;
+    padding: 8px 12px;
+    background: #3a3a3a;
+    border-left: 3px solid #C8102E;
+    border-radius: 4px;
+    transition: all 0.3s;
+    display: block;
+    font-size: 0.95em;
+  }
+  
+  nav.menu a:hover {
+    background: #C8102E;
+    color: #D4AF37;
+    border-left-color: #D4AF37;
+    transform: translateX(5px);
+  }
+  
+  /* SECCIONES */
+  section {
+    background: #2a2a2a;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 25px 0;
+    border-left: 5px solid #D4AF37;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  
+  section h2 {
+    color: #D4AF37;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #C8102E;
+  }
+  
+  section h3 {
+    color: #C8102E;
+    margin: 15px 0 10px 0;
+  }
+  
+  /* SECCIONES DESPLEGABLES */
+  details {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    transition: all 0.3s;
+  }
+  
+  details[open] {
+    border-color: #D4AF37;
+    box-shadow: 0 0 10px rgba(212,175,55,0.3);
+  }
+  
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #D4AF37;
+    font-size: 1.1em;
+    padding: 5px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  summary::-webkit-details-marker { display: none; }
+  
+  summary::after {
+    content: '▼';
+    color: #C8102E;
+    transition: transform 0.3s;
+    font-size: 0.8em;
+  }
+  
+  details[open] summary::after {
+    transform: rotate(180deg);
+  }
+  
+  summary:hover {
+    color: #fff;
+  }
+  
+  details p, details ul {
+    margin-top: 15px;
+  }
+  
+  details ul {
+    padding-left: 20px;
+  }
+  
+  details li {
+    margin: 5px 0;
+  }
+  
+  /* CÓDIGO */
+  .code-block {
+    background: #0d0d0d;
+    border: 1px solid #D4AF37;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 10px 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    color: #D4AF37;
+    overflow-x: auto;
+    position: relative;
+    font-size: 0.9em;
+    word-break: break-all;
+  }
+  
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #C8102E;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: all 0.3s;
+  }
+  
+  .copy-btn:hover {
+    background: #D4AF37;
+    color: #1a1a1a;
+  }
+  
+  .copy-btn.copied {
+    background: #2ecc71;
+  }
+  
+  /* ALERTAS */
+  .alert {
+    background: #4a1a1a;
+    border-left: 4px solid #C8102E;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+  }
+  
+  .alert strong {
+    color: #D4AF37;
+  }
+  
+  .tip {
+    background: #1a3a1a;
+    border-left: 4px solid #2ecc71;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+  }
+  
+  .tip strong {
+    color: #D4AF37;
+  }
+  
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background: #333;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  th {
+    background: #C8102E;
+    color: #D4AF37;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  td {
+    padding: 10px 12px;
+    border-top: 1px solid #555;
+  }
+  
+  tr:hover {
+    background: #3a3a3a;
+  }
+  
+  /* BOTÓN VOLVER ARRIBA */
+  #btnTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #C8102E;
+    color: #D4AF37;
+    border: 2px solid #D4AF37;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: all 0.3s;
+    z-index: 1000;
+  }
+  
+  #btnTop:hover {
+    background: #D4AF37;
+    color: #C8102E;
+    transform: translateY(-5px);
+  }
+  
+  #btnTop.show {
+    display: flex;
+  }
+  
+  /* PASOS NUMERADOS */
+  .paso {
+    background: #C8102E;
+    color: #D4AF37;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    border-top: 2px solid #D4AF37;
+    margin-top: 40px;
+  }
+  
+  footer strong {
+    color: #D4AF37;
+  }
+  
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.8em; }
+    nav.menu ul { grid-template-columns: 1fr; }
+    .container { padding: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎸 Guía Completa yt-dlp</h1>
+  <p>Descarga profesional de YouTube y más — para Javi SAO</p>
+</header>
+
+<div class="container">
+
+  <!-- MENÚ INTERACTIVO -->
+  <nav class="menu">
+    <h2>📌 Menú Rápido</h2>
+    <ul>
+      <li><a href="#intro">🎯 Introducción</a></li>
+      <li><a href="#paso1">📥 Paso 1: Descargar yt-dlp</a></li>
+      <li><a href="#paso2">📥 Paso 2: Descargar ffmpeg</a></li>
+      <li><a href="#paso3">📁 Paso 3: Preparar carpeta</a></li>
+      <li><a href="#paso4">⌨️ Paso 4: Abrir CMD</a></li>
+      <li><a href="#paso5">▶️ Paso 5: Descargar lista</a></li>
+      <li><a href="#avanzado">🚀 Comandos Avanzados</a></li>
+      <li><a href="#maestros">👑 Comandos Maestros</a></li>
+      <li><a href="#actualizar">🔄 Actualizaciones</a></li>
+      <li><a href="#errores">🛠️ Solución de Errores</a></li>
+    </ul>
+  </nav>
+
+  <!-- INTRODUCCIÓN -->
+  <section id="intro">
+    <h2>🎯 ¿Qué es yt-dlp?</h2>
+    <p><strong>yt-dlp</strong> es una herramienta gratuita, de código abierto y sin límites para descargar videos de YouTube y muchas otras plataformas. Es el estándar mundial que usan profesionales, archivistas y músicos.</p>
+    
+    <h3>✅ Ventajas</h3>
+    <ul>
+      <li>100% gratis, sin anuncios, sin registro</li>
+      <li>Descarga en la máxima calidad disponible</li>
+      <li>Soporta listas completas, canales y playlists</li>
+      <li>Funciona con YouTube, Spotify, SoundCloud, Instagram, TikTok y más</li>
+      <li>Actualizaciones constantes de la comunidad global</li>
+    </ul>
+    
+    <div class="tip">
+      <strong>💡 Tip:</strong> Necesitamos 2 archivos: <code>yt-dlp.exe</code> (el programa) y <code>ffmpeg.exe</code> (para unir video + audio en la mejor calidad).
+    </div>
+  </section>
+
+  <!-- PASO 1 -->
+  <section id="paso1">
+    <h2><span class="paso">1</span> Descargar yt-dlp.exe</h2>
+    <ol>
+      <li>Abre tu navegador y entra a: <strong>https://github.com/yt-dlp/yt-dlp/releases/latest</strong></li>
+      <li>Baja hasta la sección <strong>"Assets"</strong> (haz clic en la flechita si está colapsada).</li>
+      <li>Descarga el archivo: <strong>yt-dlp.exe</strong> (pesa ~20 MB).</li>
+      <li>NO lo abras todavía, solo déjalo descargado.</li>
+    </ol>
+    
+    <div class="alert">
+      <strong>⚠️ Nota de seguridad:</strong> Es 100% seguro. Si Windows Defender lo marca como sospechoso, es un "falso positivo". Dale a "Ejecutar de todos modos".
+    </div>
+  </section>
+
+  <!-- PASO 2 -->
+  <section id="paso2">
+    <h2><span class="paso">2</span> Descargar ffmpeg.exe</h2>
+    <p>Este archivo une el video + audio en la mejor calidad.</p>
+    <ol>
+      <li>Entra a: <strong>https://github.com/BtbN/FFmpeg-Builds/releases</strong></li>
+      <li>En la versión más reciente, sección "Assets", descarga: <strong>ffmpeg-master-latest-win64-gpl.zip</strong></li>
+      <li>Descomprime el ZIP (clic derecho → "Extraer todo...").</li>
+      <li>Entra a la carpeta <code>bin</code> y copia <strong>ffmpeg.exe</strong> a tu carpeta de Descargas.</li>
+    </ol>
+  </section>
+
+  <!-- PASO 3 -->
+  <section id="paso3">
+    <h2><span class="paso">3</span> Preparar la carpeta de trabajo</h2>
+    <ol>
+      <li>Crea una carpeta en Descargas llamada: <strong>DESCARGAR LISTAS YOUTUBE</strong></li>
+      <li>Mueve ahí dentro los 2 archivos:
+        <ul>
+          <li><code>yt-dlp.exe</code></li>
+          <li><code>ffmpeg.exe</code></li>
+        </ul>
+      </li>
+    </ol>
+    <div class="tip">
+      <strong>💡 Tip:</strong> Debes tener exactamente 2 archivos .exe dentro de esa carpeta.
+    </div>
+  </section>
+
+  <!-- PASO 4 -->
+  <section id="paso4">
+    <h2><span class="paso">4</span> Abrir la terminal (CMD) en la carpeta</h2>
+    <ol>
+      <li>Abre la carpeta <strong>DESCARGAR LISTAS YOUTUBE</strong>.</li>
+      <li>Haz clic en la <strong>barra de direcciones de arriba</strong> (donde dice la ruta).</li>
+      <li>Borra todo lo que hay escrito.</li>
+      <li>Escribe: <code>cmd</code> y presiona <strong>Enter</strong>.</li>
+      <li>Se abrirá una ventana negra. Debe mostrar la ruta de tu carpeta.</li>
+    </ol>
+    <div class="code-block">
+C:\Users\TU_USUARIO\Downloads\DESCARGAR LISTAS YOUTUBE>
+    </div>
+  </section>
+
+  <!-- PASO 5 -->
+  <section id="paso5">
+    <h2><span class="paso">5</span> Descargar una lista de reproducción</h2>
+    <ol>
+      <li>Ve a YouTube, entra a la lista de reproducción que quieres descargar.</li>
+      <li>Copia la URL completa (Ctrl+A, Ctrl+C).</li>
+      <li>En la ventana negra, pega este comando:</li>
+    </ol>
+    
+    <div class="code-block">
+      <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe -f "bestvideo+bestaudio/best" --merge-output-format mp4 -o "%(playlist_title)s\%(playlist_index)03d - %(title)s.%(ext)s" "TU_ENLACE_AQUI"
+    </div>
+    
+    <p>Reemplaza <code>TU_ENLACE_AQUI</code> por la URL real de tu lista.</p>
+    
+    <h3>📊 ¿Qué hace cada parte?</h3>
+    <table>
+      <tr><th>Parte</th><th>Función</th></tr>
+      <tr><td><code>-f "bestvideo+bestaudio/best"</code></td><td>Descarga el mejor video + mejor audio</td></tr>
+      <tr><td><code>--merge-output-format mp4</code></td><td>Los une en un solo archivo MP4</td></tr>
+      <tr><td><code>-o "%(playlist_title)s\..."</code></td><td>Crea carpeta con nombre de la lista, videos numerados</td></tr>
+    </table>
+    
+    <div class="tip">
+      <strong>💡 Tip:</strong> Los videos se guardarán en una subcarpeta con el nombre de la lista, dentro de tu carpeta de trabajo.
+    </div>
+  </section>
+
+  <!-- COMANDOS AVANZADOS -->
+  <section id="avanzado">
+    <h2>🚀 Comandos Avanzados</h2>
+    <p>Haz clic en cada sección para ver el comando y su explicación:</p>
+    
+    <details>
+      <summary>🎵 Descargar SOLO el audio (MP3 de alta calidad)</summary>
+      <p>Perfecto para tu biblioteca de karaoke o Virtual DJ.</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe -x --audio-format mp3 --audio-quality 0 "ENLACE"
+      </div>
+      <ul>
+        <li><code>-x</code> = extraer solo audio</li>
+        <li><code>--audio-format mp3</code> = convertir a MP3</li>
+        <li><code>--audio-quality 0</code> = máxima calidad</li>
+      </ul>
+    </details>
+    
+    <details>
+      <summary>📝 Descargar con SUBTÍTULOS</summary>
+      <p>Útil para letras de canciones o transcripciones.</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --write-subs --sub-lang es,en --embed-subs "ENLACE"
+      </div>
+      <p>Descarga subtítulos en español e inglés, y los incrusta en el video.</p>
+    </details>
+    
+    <details>
+      <summary>🖼️ Descargar también las MINIATURAS</summary>
+      <p>Para tener la imagen de portada de cada video.</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --write-thumbnail "ENLACE"
+      </div>
+    </details>
+    
+    <details>
+      <summary>📅 Descargar un RANGO específico de videos</summary>
+      <p>Si solo quieres los videos del 5 al 15 de una lista.</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --playlist-items 5-15 "ENLACE"
+      </div>
+    </details>
+    
+    <details>
+      <summary>📺 Descargar TODO un canal completo</summary>
+      <p>Respalda un canal entero (ej. un canal de covers).</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe -f "bestvideo+bestaudio/best" --merge-output-format mp4 "https://www.youtube.com/@NombreDelCanal"
+      </div>
+    </details>
+    
+    <details>
+      <summary>🎬 Limitar calidad a 1080p (ahorra espacio)</summary>
+      <p>Si no necesitas 4K, usa 1080p para archivos más livianos.</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe -f "bestvideo[height&lt;=1080]+bestaudio/best" --merge-output-format mp4 "ENLACE"
+      </div>
+    </details>
+    
+    <details>
+      <summary>📋 ESPÍAR una lista antes de descargar</summary>
+      <p>Ve qué videos tiene una lista sin descargarlos.</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --flat-playlist --print "%(playlist_index)s - %(title)s" "ENLACE"
+      </div>
+    </details>
+    
+    <details>
+      <summary>🌐 Descargar de OTRAS plataformas</summary>
+      <p>yt-dlp soporta MUCHAS plataformas además de YouTube:</p>
+      <ul>
+        <li>Spotify (busca el video en YouTube y lo baja)</li>
+        <li>SoundCloud</li>
+        <li>Instagram</li>
+        <li>TikTok</li>
+        <li>Facebook</li>
+        <li>Y muchas más</li>
+      </ul>
+      <p>El comando es el mismo, solo cambia el enlace.</p>
+    </details>
+  </section>
+
+  <!-- COMANDOS MAESTROS -->
+  <section id="maestros">
+    <h2>👑 Comandos Maestros</h2>
+    <p>Dos comandos "todo en uno" para tu trabajo diario:</p>
+    
+    <h3>🎬 Maestro 1080p (ahorra espacio)</h3>
+    <div class="code-block">
+      <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe -f "bestvideo[height&lt;=1080]+bestaudio/best" --merge-output-format mp4 --write-thumbnail --write-subs --sub-lang es --embed-subs -o "%(playlist_title)s\%(playlist_index)03d - %(title)s.%(ext)s" "ENLACE"
+    </div>
+    <p><strong>Hace todo esto:</strong></p>
+    <ul>
+      <li>✅ Video en 1080p (no 4K)</li>
+      <li>✅ Mejor audio</li>
+      <li>✅ MP4</li>
+      <li>✅ Descarga miniatura</li>
+      <li>✅ Descarga subtítulos en español</li>
+      <li>✅ Incrusta subtítulos en el video</li>
+      <li>✅ Organiza en carpetas numeradas</li>
+    </ul>
+    
+    <h3>🎬 Maestro 4K (máxima calidad)</h3>
+    <div class="code-block">
+      <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe -f "bestvideo+bestaudio/best" --merge-output-format mp4 --write-thumbnail --write-subs --sub-lang es --embed-subs -o "%(playlist_title)s\%(playlist_index)03d - %(title)s.%(ext)s" "ENLACE"
+    </div>
+    <p><strong>Hace todo esto:</strong></p>
+    <ul>
+      <li>✅ Video en la MÁXIMA calidad (hasta 4K/8K)</li>
+      <li>✅ Mejor audio</li>
+      <li>✅ MP4</li>
+      <li>✅ Descarga miniatura</li>
+      <li>✅ Descarga subtítulos en español</li>
+      <li>✅ Incrusta subtítulos en el video</li>
+      <li>✅ Organiza en carpetas numeradas</li>
+    </ul>
+    
+    <div class="alert">
+      <strong>⚠️ Importante:</strong> Los archivos en 4K pesan MUCHO más. Úsalos solo cuando realmente necesites esa calidad.
+    </div>
+  </section>
+
+  <!-- ACTUALIZACIONES -->
+  <section id="actualizar">
+    <h2>🔄 Actualizaciones</h2>
+    
+    <h3>📌 yt-dlp.exe → SÍ actualizar</h3>
+    <p>YouTube cambia su código constantemente para bloquear descargadores. Los creadores de yt-dlp sacan actualizaciones cada 1-2 semanas.</p>
+    <p><strong>¿Cuándo actualizar?</strong></p>
+    <ul>
+      <li>Si te da error tipo "Unable to extract..."</li>
+      <li>Si ya no baja en la mejor calidad</li>
+      <li>Si tarda mucho más de lo normal</li>
+      <li>Recomendación: <strong>una vez al mes</strong></li>
+    </ul>
+    <p><strong>¿Cómo actualizar?</strong></p>
+    <ol>
+      <li>Entra a: https://github.com/yt-dlp/yt-dlp/releases/latest</li>
+      <li>Descarga el nuevo <code>yt-dlp.exe</code></li>
+      <li>Borra el viejo de tu carpeta</li>
+      <li>Pon el nuevo en su lugar</li>
+    </ol>
+    
+    <h3>📌 ffmpeg.exe → NO actualizar</h3>
+    <p>Es muy estable. Solo actualízalo si yt-dlp te lo pide explícitamente (muy raro).</p>
+  </section>
+
+  <!-- SOLUCIÓN DE ERRORES -->
+  <section id="errores">
+    <h2>🛠️ Solución de Errores Comunes</h2>
+    
+    <details>
+      <summary>❌ "The playlist does not exist"</summary>
+      <p><strong>Causa:</strong> El enlace está incompleto o la lista es privada.</p>
+      <p><strong>Solución:</strong> Copia el enlace completo desde la barra del navegador con Ctrl+A, Ctrl+C.</p>
+    </details>
+    
+    <details>
+      <summary>❌ "Sign in to confirm your age"</summary>
+      <p><strong>Causa:</strong> El video tiene restricción de edad.</p>
+      <p><strong>Solución:</strong> Agrega cookies de tu navegador al comando:</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --cookies-from-browser chrome "ENLACE"
+      </div>
+    </details>
+    
+    <details>
+      <summary>❌ "ffmpeg.exe not found"</summary>
+      <p><strong>Causa:</strong> Falta el archivo ffmpeg.exe en la carpeta.</p>
+      <p><strong>Solución:</strong> Vuelve al Paso 2 y asegúrate de que ffmpeg.exe esté en la misma carpeta que yt-dlp.exe.</p>
+    </details>
+    
+    <details>
+      <summary>❌ La descarga se cortó a la mitad</summary>
+      <p><strong>Solución:</strong> Vuelve a ejecutar el MISMO comando. yt-dlp es inteligente y retoma desde donde se quedó, no descarga todo de nuevo.</p>
+    </details>
+    
+    <details>
+      <summary>❌ Windows Defender lo bloquea</summary>
+      <p><strong>Causa:</strong> Falso positivo.</p>
+      <p><strong>Solución:</strong> Clic en "Más información" → "Ejecutar de todos modos".</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>🎸 Guía creada para <strong>Javi SAO</strong> — Total Fest</p>
+    <p>Actualizado: Noviembre 2026</p>
+  </footer>
+
+</div>
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<button id="btnTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆</button>
+
+<script>
+  // Copiar comandos al portapapeles
+  function copiar(btn) {
+    const codeBlock = btn.parentElement;
+    const text = codeBlock.textContent.replace('📋 Copiar', '').replace('✅ Copiado', '').trim();
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = '✅ Copiado';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '📋 Copiar';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+  
+  // Mostrar/ocultar botón volver arriba
+  window.onscroll = function() {
+    const btn = document.getElementById('btnTop');
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  };
+</script>
+
+</body>
+</html>
