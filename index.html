@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guía Completa yt-dlp | Javi SAO</title>
-   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎸</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎸</text></svg>">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   
@@ -21,7 +21,6 @@
     padding: 40px 20px;
     text-align: center;
     border-bottom: 4px solid #D4AF37;
-    position: relative;
   }
   
   header h1 {
@@ -42,110 +41,106 @@
     padding: 20px;
   }
   
-/* MENÚ INTERACTIVO - RESPONSIVE */
-nav.menu {
-  background: #2a2a2a;
-  border: 2px solid #D4AF37;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 30px 0;
-  box-shadow: 0 4px 15px rgba(212,175,55,0.2);
-}
-
-nav.menu h2 {
-  color: #D4AF37;
-  margin-bottom: 15px;
-  font-size: 1.3em;
-  text-align: center;
-}
-
-nav.menu ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 8px;
-}
-
-nav.menu a {
-  color: #f0f0f0;
-  text-decoration: none;
-  padding: 8px 12px;
-  background: #3a3a3a;
-  border-left: 3px solid #C8102E;
-  border-radius: 4px;
-  transition: all 0.3s;
-  display: block;
-  font-size: 0.95em;
-}
-
-nav.menu a:hover {
-  background: #C8102E;
-  color: #D4AF37;
-  border-left-color: #D4AF37;
-  transform: translateX(5px);
-}
-
-/* BOTÓN HAMBURGUESA (solo visible en móvil) */
-.menu-toggle {
-  display: none;
-  background: #C8102E;
-  color: #D4AF37;
-  border: 2px solid #D4AF37;
-  padding: 10px 15px;
-  border-radius: 6px;
-  font-size: 1.5em;
-  cursor: pointer;
-  margin: 0 auto;
-  transition: all 0.3s;
-}
-
-.menu-toggle:hover {
-  background: #D4AF37;
-  color: #C8102E;
-}
-
-/* ESTILOS PARA MÓVIL */
-@media (max-width: 600px) {
-  header h1 { font-size: 1.8em; }
-  .container { padding: 10px; }
-  
-  /* Menú compacto en móvil */
+  /* MENÚ INTERACTIVO - RESPONSIVE */
   nav.menu {
-    padding: 10px;
-    margin: 15px 0;
-    position: sticky;
-    top: 5px;
-    z-index: 100;
+    background: #2a2a2a;
+    border: 2px solid #D4AF37;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 0;
+    box-shadow: 0 4px 15px rgba(212,175,55,0.2);
   }
   
   nav.menu h2 {
-    font-size: 1em;
-    margin-bottom: 10px;
+    color: #D4AF37;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    text-align: center;
   }
   
-  /* Mostrar botón hamburguesa */
-  .menu-toggle {
-    display: block;
-  }
-  
-  /* Ocultar lista por defecto */
   nav.menu ul {
-    display: none;
-    grid-template-columns: 1fr;
-    gap: 5px;
-    margin-top: 10px;
-  }
-  
-  /* Mostrar lista cuando tenga la clase "open" */
-  nav.menu ul.open {
+    list-style: none;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
   }
   
   nav.menu a {
-    padding: 6px 10px;
-    font-size: 0.85em;
+    color: #f0f0f0;
+    text-decoration: none;
+    padding: 8px 12px;
+    background: #3a3a3a;
+    border-left: 3px solid #C8102E;
+    border-radius: 4px;
+    transition: all 0.3s;
+    display: block;
+    font-size: 0.95em;
   }
-}
+  
+  nav.menu a:hover {
+    background: #C8102E;
+    color: #D4AF37;
+    border-left-color: #D4AF37;
+    transform: translateX(5px);
+  }
+  
+  /* BOTÓN HAMBURGUESA (solo visible en móvil) */
+  .menu-toggle {
+    display: none;
+    background: #C8102E;
+    color: #D4AF37;
+    border: 2px solid #D4AF37;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: all 0.3s;
+  }
+  
+  .menu-toggle:hover {
+    background: #D4AF37;
+    color: #C8102E;
+  }
+  
+  /* ESTILOS PARA MÓVIL */
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.8em; }
+    .container { padding: 10px; }
+    
+    nav.menu {
+      padding: 10px;
+      margin: 15px 0;
+      position: sticky;
+      top: 5px;
+      z-index: 100;
+    }
+    
+    nav.menu h2 {
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    
+    .menu-toggle {
+      display: block;
+    }
+    
+    nav.menu ul {
+      display: none;
+      grid-template-columns: 1fr;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    
+    nav.menu ul.open {
+      display: grid;
+    }
+    
+    nav.menu a {
+      padding: 6px 10px;
+      font-size: 0.85em;
+    }
+  }
   
   /* SECCIONES */
   section {
@@ -288,6 +283,18 @@ nav.menu a:hover {
     color: #D4AF37;
   }
   
+  .warning {
+    background: #4a3a1a;
+    border-left: 4px solid #f39c12;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+  }
+  
+  .warning strong {
+    color: #D4AF37;
+  }
+  
   /* TABLAS */
   table {
     width: 100%;
@@ -370,45 +377,39 @@ nav.menu a:hover {
   footer strong {
     color: #D4AF37;
   }
-  
-  @media (max-width: 600px) {
-    header h1 { font-size: 1.8em; }
-    nav.menu ul { grid-template-columns: 1fr; }
-    .container { padding: 10px; }
-  }
 </style>
 </head>
 <body>
 
 <header>
   <h1>🎸 Guía Completa yt-dlp</h1>
-  <p>Descarga profesional de YouTube y más — para Javi SAO</p>
+  <p>Descarga profesional de YouTube — Solución completa de problemas</p>
 </header>
 
 <div class="container">
 
   <!-- MENÚ INTERACTIVO -->
-<nav class="menu">
-  <h2>📌 Menú Rápido</h2>
-  <button class="menu-toggle" onclick="toggleMenu()">☰ Ver secciones</button>
-  <ul id="menuList">
-    <li><a href="#intro" onclick="closeMenu()">🎯 Introducción</a></li>
-    <li><a href="#paso1" onclick="closeMenu()">📥 Paso 1: Descargar yt-dlp</a></li>
-    <li><a href="#paso2" onclick="closeMenu()">📥 Paso 2: Descargar ffmpeg</a></li>
-    <li><a href="#paso3" onclick="closeMenu()">📁 Paso 3: Preparar carpeta</a></li>
-    <li><a href="#paso4" onclick="closeMenu()">⌨️ Paso 4: Abrir CMD</a></li>
-    <li><a href="#paso5" onclick="closeMenu()">▶️ Paso 5: Descargar lista</a></li>
-    <li><a href="#avanzado" onclick="closeMenu()">🚀 Comandos Avanzados</a></li>
-    <li><a href="#maestros" onclick="closeMenu()">👑 Comandos Maestros</a></li>
-    <li><a href="#actualizar" onclick="closeMenu()">🔄 Actualizaciones</a></li>
-    <li><a href="#errores" onclick="closeMenu()">🛠️ Solución de Errores</a></li>
-  </ul>
-</nav>
+  <nav class="menu">
+    <h2>📌 Menú Rápido</h2>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Ver secciones</button>
+    <ul id="menuList">
+      <li><a href="#intro" onclick="closeMenu()">🎯 Introducción</a></li>
+      <li><a href="#instalacion" onclick="closeMenu()">📥 Instalación Completa</a></li>
+      <li><a href="#basico" onclick="closeMenu()">▶️ Comando Básico</a></li>
+      <li><a href="#cookies" onclick="closeMenu()">🍪 Solución: Cookies</a></li>
+      <li><a href="#deno" onclick="closeMenu()">🧠 Solución: Deno</a></li>
+      <li><a href="#avanzado" onclick="closeMenu()">🚀 Comandos Avanzados</a></li>
+      <li><a href="#maestros" onclick="closeMenu()">👑 Comandos Maestros</a></li>
+      <li><a href="#problemas" onclick="closeMenu()">🛠️ Problemas Comunes</a></li>
+      <li><a href="#actualizar" onclick="closeMenu()">🔄 Actualizaciones</a></li>
+      <li><a href="#seguridad" onclick="closeMenu()">🔒 Seguridad</a></li>
+    </ul>
+  </nav>
 
   <!-- INTRODUCCIÓN -->
   <section id="intro">
     <h2>🎯 ¿Qué es yt-dlp?</h2>
-    <p><strong>yt-dlp</strong> es una herramienta gratuita, de código abierto y sin límites para descargar videos de YouTube y muchas otras plataformas. Es el estándar mundial que usan profesionales, archivistas y músicos.</p>
+    <p><strong>yt-dlp</strong> es una herramienta gratuita, de código abierto y sin límites para descargar videos de YouTube y muchas otras plataformas.</p>
     
     <h3>✅ Ventajas</h3>
     <ul>
@@ -420,84 +421,61 @@ nav.menu a:hover {
     </ul>
     
     <div class="tip">
-      <strong>💡 Tip:</strong> Necesitamos 2 archivos: <code>yt-dlp.exe</code> (el programa) y <code>ffmpeg.exe</code> (para unir video + audio en la mejor calidad).
+      <strong>💡 Importante:</strong> YouTube y yt-dlp están en una "guerra" constante. YouTube cambia su código para bloquear descargas, y yt-dlp se actualiza para saltar esos bloqueos. Esta guía te enseña cómo manejar los problemas más comunes.
     </div>
   </section>
 
-  <!-- PASO 1 -->
-  <section id="paso1">
-    <h2><span class="paso">1</span> Descargar yt-dlp.exe</h2>
+  <!-- INSTALACIÓN COMPLETA -->
+  <section id="instalacion">
+    <h2>📥 Instalación Completa (4 archivos)</h2>
+    <p>Necesitas <strong>4 archivos</strong> en tu carpeta de trabajo:</p>
+    
+    <h3><span class="paso">1</span> yt-dlp.exe (el programa principal)</h3>
     <ol>
-      <li>Abre tu navegador y entra a: <strong>https://github.com/yt-dlp/yt-dlp/releases/latest</strong></li>
-      <li>Baja hasta la sección <strong>"Assets"</strong> (haz clic en la flechita si está colapsada).</li>
-      <li>Descarga el archivo: <strong>yt-dlp.exe</strong> (pesa ~20 MB).</li>
-      <li>NO lo abras todavía, solo déjalo descargado.</li>
+      <li>Entra a: <strong>https://github.com/yt-dlp/yt-dlp/releases/latest</strong></li>
+      <li>Descarga: <strong>yt-dlp.exe</strong></li>
     </ol>
     
-    <div class="alert">
-      <strong>⚠️ Nota de seguridad:</strong> Es 100% seguro. Si Windows Defender lo marca como sospechoso, es un "falso positivo". Dale a "Ejecutar de todos modos".
-    </div>
-  </section>
-
-  <!-- PASO 2 -->
-  <section id="paso2">
-    <h2><span class="paso">2</span> Descargar ffmpeg.exe</h2>
-    <p>Este archivo une el video + audio en la mejor calidad.</p>
+    <h3><span class="paso">2</span> ffmpeg.exe (une video + audio)</h3>
     <ol>
       <li>Entra a: <strong>https://github.com/BtbN/FFmpeg-Builds/releases</strong></li>
-      <li>En la versión más reciente, sección "Assets", descarga: <strong>ffmpeg-master-latest-win64-gpl.zip</strong></li>
-      <li>Descomprime el ZIP (clic derecho → "Extraer todo...").</li>
-      <li>Entra a la carpeta <code>bin</code> y copia <strong>ffmpeg.exe</strong> a tu carpeta de Descargas.</li>
+      <li>Descarga: <strong>ffmpeg-master-latest-win64-gpl.zip</strong></li>
+      <li>Descomprime y copia <strong>ffmpeg.exe</strong> desde la carpeta <code>bin</code></li>
     </ol>
-  </section>
-
-  <!-- PASO 3 -->
-  <section id="paso3">
-    <h2><span class="paso">3</span> Preparar la carpeta de trabajo</h2>
+    
+    <h3><span class="paso">3</span> deno.exe (resuelve desafíos de YouTube)</h3>
+    <div class="warning">
+      <strong>⚠️ IMPORTANTE:</strong> Sin Deno, YouTube bloquea las descargas diciendo "Signature solving failed". Deno es el "cerebro" que yt-dlp necesita para descifrar las firmas de seguridad.
+    </div>
     <ol>
-      <li>Crea una carpeta en Descargas llamada: <strong>DESCARGAR LISTAS YOUTUBE</strong></li>
-      <li>Mueve ahí dentro los 2 archivos:
-        <ul>
-          <li><code>yt-dlp.exe</code></li>
-          <li><code>ffmpeg.exe</code></li>
-        </ul>
-      </li>
+      <li>Entra a: <strong>https://github.com/denoland/deno/releases/latest</strong></li>
+      <li>Descarga: <strong>deno-x86_64-pc-windows-msvc.zip</strong></li>
+      <li>Descomprime y copia <strong>deno.exe</strong></li>
     </ol>
+    
+    <h3><span class="paso">4</span> cookies.txt (opcional, para descargas grandes)</h3>
+    <p>Lo explicamos en la sección <a href="#cookies" style="color: #D4AF37;">🍪 Solución: Cookies</a></p>
+    
     <div class="tip">
-      <strong>💡 Tip:</strong> Debes tener exactamente 2 archivos .exe dentro de esa carpeta.
+      <strong>💡 Estructura final:</strong> Tu carpeta debe tener estos 4 archivos:
+      <ul style="margin-top: 10px;">
+        <li><code>yt-dlp.exe</code></li>
+        <li><code>ffmpeg.exe</code></li>
+        <li><code>deno.exe</code></li>
+        <li><code>cookies.txt</code> (si lo necesitas)</li>
+      </ul>
     </div>
   </section>
 
-  <!-- PASO 4 -->
-  <section id="paso4">
-    <h2><span class="paso">4</span> Abrir la terminal (CMD) en la carpeta</h2>
-    <ol>
-      <li>Abre la carpeta <strong>DESCARGAR LISTAS YOUTUBE</strong>.</li>
-      <li>Haz clic en la <strong>barra de direcciones de arriba</strong> (donde dice la ruta).</li>
-      <li>Borra todo lo que hay escrito.</li>
-      <li>Escribe: <code>cmd</code> y presiona <strong>Enter</strong>.</li>
-      <li>Se abrirá una ventana negra. Debe mostrar la ruta de tu carpeta.</li>
-    </ol>
-    <div class="code-block">
-C:\Users\TU_USUARIO\Downloads\DESCARGAR LISTAS YOUTUBE>
-    </div>
-  </section>
-
-  <!-- PASO 5 -->
-  <section id="paso5">
-    <h2><span class="paso">5</span> Descargar una lista de reproducción</h2>
-    <ol>
-      <li>Ve a YouTube, entra a la lista de reproducción que quieres descargar.</li>
-      <li>Copia la URL completa (Ctrl+A, Ctrl+C).</li>
-      <li>En la ventana negra, pega este comando:</li>
-    </ol>
+  <!-- COMANDO BÁSICO -->
+  <section id="basico">
+    <h2>▶️ Comando Básico (para listas pequeñas)</h2>
+    <p>Para listas de menos de 50 videos, usa este comando:</p>
     
     <div class="code-block">
       <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
 yt-dlp.exe -f "bestvideo+bestaudio/best" --merge-output-format mp4 -o "%(playlist_title)s\%(playlist_index)03d - %(title)s.%(ext)s" "TU_ENLACE_AQUI"
     </div>
-    
-    <p>Reemplaza <code>TU_ENLACE_AQUI</code> por la URL real de tu lista.</p>
     
     <h3>📊 ¿Qué hace cada parte?</h3>
     <table>
@@ -508,18 +486,117 @@ yt-dlp.exe -f "bestvideo+bestaudio/best" --merge-output-format mp4 -o "%(playlis
     </table>
     
     <div class="tip">
-      <strong>💡 Tip:</strong> Los videos se guardarán en una subcarpeta con el nombre de la lista, dentro de tu carpeta de trabajo.
+      <strong>💡 Tip:</strong> Los videos se guardan en una subcarpeta con el nombre de la lista, dentro de tu carpeta de trabajo.
+    </div>
+  </section>
+
+  <!-- SOLUCIÓN COOKIES -->
+  <section id="cookies">
+    <h2>🍪 Solución: Problema de "Bot" con Cookies</h2>
+    
+    <div class="alert">
+      <strong>❌ Error:</strong> "Sign in to confirm you're not a bot"
+    </div>
+    
+    <h3>🔍 ¿Por qué pasa?</h3>
+    <p>YouTube detecta que estás descargando muchos videos seguidos y piensa que eres un bot. Te pide que te identifiques con tu cuenta.</p>
+    
+    <h3>✅ Solución: Usar cookies de tu cuenta</h3>
+    
+    <details>
+      <summary>Opción A: Cookies automáticas (Chrome/Edge/Firefox)</summary>
+      <p>Si tu navegador NO tiene problemas de DPAPI:</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --cookies-from-browser chrome "ENLACE"
+      </div>
+      <p>O para Edge:</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --cookies-from-browser edge "ENLACE"
+      </div>
+      <p>O para Firefox:</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --cookies-from-browser firefox "ENLACE"
+      </div>
+      <div class="warning">
+        <strong>⚠️ Importante:</strong> Cierra COMPLETAMENTE el navegador antes de ejecutar el comando (Ctrl+Shift+Esc → finalizar tarea).
+      </div>
+    </details>
+    
+    <details>
+      <summary>Opción B: Cookies manuales (si falla la automática)</summary>
+      <p>Si ves el error "Failed to decrypt with DPAPI", usa este método:</p>
+      
+      <h4>Paso 1: Instalar extensión en Edge/Chrome</h4>
+      <ol>
+        <li>Entra a: <strong>https://chromewebstore.google.com/</strong></li>
+        <li>Busca: <strong>"Get cookies.txt LOCALLY"</strong></li>
+        <li>Instala la extensión (tiene 900,000+ usuarios, es segura)</li>
+      </ol>
+      
+      <h4>Paso 2: Exportar cookies</h4>
+      <ol>
+        <li>Abre YouTube en tu navegador y verifica que estás logueado</li>
+        <li>Haz clic en el ícono de la extensión (galleta 🍪)</li>
+        <li>Selecciona formato: <strong>Netscape</strong> (NO JSON)</li>
+        <li>Haz clic en <strong>"Export"</strong></li>
+        <li>Se descarga un archivo <code>cookies.txt</code></li>
+      </ol>
+      
+      <h4>Paso 3: Usar el archivo de cookies</h4>
+      <ol>
+        <li>Mueve <code>cookies.txt</code> a tu carpeta de trabajo</li>
+        <li>Ejecuta el comando con <code>--cookies cookies.txt</code>:</li>
+      </ol>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --cookies cookies.txt "ENLACE"
+      </div>
+    </details>
+    
+    <div class="tip">
+      <strong>💡 ¿Cuándo usar cookies?</strong>
+      <ul style="margin-top: 10px;">
+        <li>Listas grandes (100+ videos)</li>
+        <li>Canales completos</li>
+        <li>Videos con restricción de edad</li>
+        <li>Videos privados</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SOLUCIÓN DENO -->
+  <section id="deno">
+    <h2>🧠 Solución: Problema de "Signature Solving Failed"</h2>
+    
+    <div class="alert">
+      <strong>❌ Error:</strong> "Signature solving failed: Ensure you have a supported JavaScript runtime"
+    </div>
+    
+    <h3>🔍 ¿Por qué pasa?</h3>
+    <p>YouTube cambió su sistema de seguridad y ahora usa un "desafío JavaScript" que yt-dlp no puede resolver solo. Necesita un motor de JavaScript real (Deno).</p>
+    
+    <h3>✅ Solución: Instalar Deno</h3>
+    <ol>
+      <li>Descarga Deno desde: <strong>https://github.com/denoland/deno/releases/latest</strong></li>
+      <li>Archivo: <strong>deno-x86_64-pc-windows-msvc.zip</strong></li>
+      <li>Descomprime y copia <strong>deno.exe</strong> a tu carpeta de trabajo</li>
+      <li>yt-dlp lo detecta automáticamente</li>
+    </ol>
+    
+    <div class="tip">
+      <strong>💡 Una vez instalado:</strong> No necesitas hacer nada más. yt-dlp usa Deno automáticamente para resolver los desafíos de YouTube.
     </div>
   </section>
 
   <!-- COMANDOS AVANZADOS -->
   <section id="avanzado">
     <h2>🚀 Comandos Avanzados</h2>
-    <p>Haz clic en cada sección para ver el comando y su explicación:</p>
     
     <details>
       <summary>🎵 Descargar SOLO el audio (MP3 de alta calidad)</summary>
-      <p>Perfecto para tu biblioteca de karaoke o Virtual DJ.</p>
       <div class="code-block">
         <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
 yt-dlp.exe -x --audio-format mp3 --audio-quality 0 "ENLACE"
@@ -533,17 +610,14 @@ yt-dlp.exe -x --audio-format mp3 --audio-quality 0 "ENLACE"
     
     <details>
       <summary>📝 Descargar con SUBTÍTULOS</summary>
-      <p>Útil para letras de canciones o transcripciones.</p>
       <div class="code-block">
         <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
 yt-dlp.exe --write-subs --sub-lang es,en --embed-subs "ENLACE"
       </div>
-      <p>Descarga subtítulos en español e inglés, y los incrusta en el video.</p>
     </details>
     
     <details>
       <summary>🖼️ Descargar también las MINIATURAS</summary>
-      <p>Para tener la imagen de portada de cada video.</p>
       <div class="code-block">
         <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
 yt-dlp.exe --write-thumbnail "ENLACE"
@@ -552,7 +626,6 @@ yt-dlp.exe --write-thumbnail "ENLACE"
     
     <details>
       <summary>📅 Descargar un RANGO específico de videos</summary>
-      <p>Si solo quieres los videos del 5 al 15 de una lista.</p>
       <div class="code-block">
         <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
 yt-dlp.exe --playlist-items 5-15 "ENLACE"
@@ -561,7 +634,6 @@ yt-dlp.exe --playlist-items 5-15 "ENLACE"
     
     <details>
       <summary>📺 Descargar TODO un canal completo</summary>
-      <p>Respalda un canal entero (ej. un canal de covers).</p>
       <div class="code-block">
         <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
 yt-dlp.exe -f "bestvideo+bestaudio/best" --merge-output-format mp4 "https://www.youtube.com/@NombreDelCanal"
@@ -570,133 +642,73 @@ yt-dlp.exe -f "bestvideo+bestaudio/best" --merge-output-format mp4 "https://www.
     
     <details>
       <summary>🎬 Limitar calidad a 1080p (ahorra espacio)</summary>
-      <p>Si no necesitas 4K, usa 1080p para archivos más livianos.</p>
       <div class="code-block">
         <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
 yt-dlp.exe -f "bestvideo[height&lt;=1080]+bestaudio/best" --merge-output-format mp4 "ENLACE"
       </div>
-    </details>
-    
-    <details>
-      <summary>📋 ESPÍAR una lista antes de descargar</summary>
-      <p>Ve qué videos tiene una lista sin descargarlos.</p>
-      <div class="code-block">
-        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
-yt-dlp.exe --flat-playlist --print "%(playlist_index)s - %(title)s" "ENLACE"
-      </div>
-    </details>
-    
-    <details>
-      <summary>🌐 Descargar de OTRAS plataformas</summary>
-      <p>yt-dlp soporta MUCHAS plataformas además de YouTube:</p>
-      <ul>
-        <li>Spotify (busca el video en YouTube y lo baja)</li>
-        <li>SoundCloud</li>
-        <li>Instagram</li>
-        <li>TikTok</li>
-        <li>Facebook</li>
-        <li>Y muchas más</li>
-      </ul>
-      <p>El comando es el mismo, solo cambia el enlace.</p>
     </details>
   </section>
 
   <!-- COMANDOS MAESTROS -->
   <section id="maestros">
     <h2>👑 Comandos Maestros</h2>
-    <p>Dos comandos "todo en uno" para tu trabajo diario:</p>
     
-    <h3>🎬 Maestro 1080p (ahorra espacio)</h3>
+    <h3>🎬 Maestro 1080p con cookies (recomendado)</h3>
     <div class="code-block">
       <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
-yt-dlp.exe -f "bestvideo[height&lt;=1080]+bestaudio/best" --merge-output-format mp4 --write-thumbnail --write-subs --sub-lang es --embed-subs -o "%(playlist_title)s\%(playlist_index)03d - %(title)s.%(ext)s" "ENLACE"
+yt-dlp.exe --cookies cookies.txt -f "bestvideo[height&lt;=1080]+bestaudio/best" --merge-output-format mp4 --write-thumbnail --write-subs --sub-lang es --embed-subs -o "%(playlist_title)s\%(playlist_index)03d - %(title)s.%(ext)s" "ENLACE"
     </div>
-    <p><strong>Hace todo esto:</strong></p>
-    <ul>
-      <li>✅ Video en 1080p (no 4K)</li>
-      <li>✅ Mejor audio</li>
-      <li>✅ MP4</li>
-      <li>✅ Descarga miniatura</li>
-      <li>✅ Descarga subtítulos en español</li>
-      <li>✅ Incrusta subtítulos en el video</li>
-      <li>✅ Organiza en carpetas numeradas</li>
-    </ul>
     
-    <h3>🎬 Maestro 4K (máxima calidad)</h3>
+    <h3>🎬 Maestro 4K con cookies (máxima calidad)</h3>
     <div class="code-block">
       <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
-yt-dlp.exe -f "bestvideo+bestaudio/best" --merge-output-format mp4 --write-thumbnail --write-subs --sub-lang es --embed-subs -o "%(playlist_title)s\%(playlist_index)03d - %(title)s.%(ext)s" "ENLACE"
+yt-dlp.exe --cookies cookies.txt -f "bestvideo+bestaudio/best" --merge-output-format mp4 --write-thumbnail --write-subs --sub-lang es --embed-subs -o "%(playlist_title)s\%(playlist_index)03d - %(title)s.%(ext)s" "ENLACE"
     </div>
-    <p><strong>Hace todo esto:</strong></p>
-    <ul>
-      <li>✅ Video en la MÁXIMA calidad (hasta 4K/8K)</li>
-      <li>✅ Mejor audio</li>
-      <li>✅ MP4</li>
-      <li>✅ Descarga miniatura</li>
-      <li>✅ Descarga subtítulos en español</li>
-      <li>✅ Incrusta subtítulos en el video</li>
-      <li>✅ Organiza en carpetas numeradas</li>
-    </ul>
     
-    <div class="alert">
-      <strong>⚠️ Importante:</strong> Los archivos en 4K pesan MUCHO más. Úsalos solo cuando realmente necesites esa calidad.
+    <h3>🎵 Maestro MP3 con cookies (solo audio)</h3>
+    <div class="code-block">
+      <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe --cookies cookies.txt -x --audio-format mp3 --audio-quality 0 -o "%(playlist_title)s\%(playlist_index)03d - %(title)s.%(ext)s" "ENLACE"
     </div>
   </section>
 
-  <!-- ACTUALIZACIONES -->
-  <section id="actualizar">
-    <h2>🔄 Actualizaciones</h2>
-    
-    <h3>📌 yt-dlp.exe → SÍ actualizar</h3>
-    <p>YouTube cambia su código constantemente para bloquear descargadores. Los creadores de yt-dlp sacan actualizaciones cada 1-2 semanas.</p>
-    <p><strong>¿Cuándo actualizar?</strong></p>
-    <ul>
-      <li>Si te da error tipo "Unable to extract..."</li>
-      <li>Si ya no baja en la mejor calidad</li>
-      <li>Si tarda mucho más de lo normal</li>
-      <li>Recomendación: <strong>una vez al mes</strong></li>
-    </ul>
-    <p><strong>¿Cómo actualizar?</strong></p>
-    <ol>
-      <li>Entra a: https://github.com/yt-dlp/yt-dlp/releases/latest</li>
-      <li>Descarga el nuevo <code>yt-dlp.exe</code></li>
-      <li>Borra el viejo de tu carpeta</li>
-      <li>Pon el nuevo en su lugar</li>
-    </ol>
-    
-    <h3>📌 ffmpeg.exe → NO actualizar</h3>
-    <p>Es muy estable. Solo actualízalo si yt-dlp te lo pide explícitamente (muy raro).</p>
-  </section>
-
-  <!-- SOLUCIÓN DE ERRORES -->
-  <section id="errores">
-    <h2>🛠️ Solución de Errores Comunes</h2>
+  <!-- PROBLEMAS COMUNES -->
+  <section id="problemas">
+    <h2>🛠️ Problemas Comunes y Soluciones</h2>
     
     <details>
       <summary>❌ "The playlist does not exist"</summary>
       <p><strong>Causa:</strong> El enlace está incompleto o la lista es privada.</p>
-      <p><strong>Solución:</strong> Copia el enlace completo desde la barra del navegador con Ctrl+A, Ctrl+C.</p>
+      <p><strong>Solución:</strong> Copia el enlace completo con Ctrl+A, Ctrl+C.</p>
     </details>
     
     <details>
-      <summary>❌ "Sign in to confirm your age"</summary>
-      <p><strong>Causa:</strong> El video tiene restricción de edad.</p>
-      <p><strong>Solución:</strong> Agrega cookies de tu navegador al comando:</p>
-      <div class="code-block">
-        <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
-yt-dlp.exe --cookies-from-browser chrome "ENLACE"
-      </div>
+      <summary>❌ "Sign in to confirm you're not a bot"</summary>
+      <p><strong>Causa:</strong> YouTube te detectó como bot por descargar muchos videos.</p>
+      <p><strong>Solución:</strong> Usa cookies de tu cuenta. Ve a la sección <a href="#cookies" style="color: #D4AF37;">🍪 Solución: Cookies</a></p>
     </details>
     
     <details>
-      <summary>❌ "ffmpeg.exe not found"</summary>
-      <p><strong>Causa:</strong> Falta el archivo ffmpeg.exe en la carpeta.</p>
-      <p><strong>Solución:</strong> Vuelve al Paso 2 y asegúrate de que ffmpeg.exe esté en la misma carpeta que yt-dlp.exe.</p>
+      <summary>❌ "Failed to decrypt with DPAPI"</summary>
+      <p><strong>Causa:</strong> Tu navegador tiene las cookies encriptadas.</p>
+      <p><strong>Solución:</strong> Exporta las cookies manualmente con la extensión. Ve a la sección <a href="#cookies" style="color: #D4AF37;">🍪 Opción B: Cookies manuales</a></p>
+    </details>
+    
+    <details>
+      <summary>❌ "Signature solving failed"</summary>
+      <p><strong>Causa:</strong> YouTube cambió su sistema de seguridad.</p>
+      <p><strong>Solución:</strong> Instala Deno. Ve a la sección <a href="#deno" style="color: #D4AF37;">🧠 Solución: Deno</a></p>
+    </details>
+    
+    <details>
+      <summary>❌ "Could not copy Chrome cookie database"</summary>
+      <p><strong>Causa:</strong> El navegador está abierto y bloquea las cookies.</p>
+      <p><strong>Solución:</strong> Cierra COMPLETAMENTE el navegador (Ctrl+Shift+Esc → finalizar tarea).</p>
     </details>
     
     <details>
       <summary>❌ La descarga se cortó a la mitad</summary>
-      <p><strong>Solución:</strong> Vuelve a ejecutar el MISMO comando. yt-dlp es inteligente y retoma desde donde se quedó, no descarga todo de nuevo.</p>
+      <p><strong>Solución:</strong> Vuelve a ejecutar el MISMO comando. yt-dlp retoma desde donde se quedó.</p>
     </details>
     
     <details>
@@ -704,6 +716,60 @@ yt-dlp.exe --cookies-from-browser chrome "ENLACE"
       <p><strong>Causa:</strong> Falso positivo.</p>
       <p><strong>Solución:</strong> Clic en "Más información" → "Ejecutar de todos modos".</p>
     </details>
+  </section>
+
+  <!-- ACTUALIZACIONES -->
+  <section id="actualizar">
+    <h2>🔄 Actualizaciones</h2>
+    
+    <h3>📌 yt-dlp.exe → Actualizar cada mes</h3>
+    <p>YouTube cambia su código constantemente. Actualiza yt-dlp cuando:</p>
+    <ul>
+      <li>Te da error "Unable to extract..."</li>
+      <li>Ya no baja en la mejor calidad</li>
+      <li>Tarda mucho más de lo normal</li>
+    </ul>
+    <p><strong>Cómo actualizar:</strong> Descarga el nuevo <code>yt-dlp.exe</code> y reemplaza el viejo.</p>
+    
+    <h3>📌 deno.exe → Actualizar cada 2-3 meses</h3>
+    <p>Solo si yt-dlp te pide una versión más nueva de Deno.</p>
+    
+    <h3>📌 ffmpeg.exe → NO actualizar</h3>
+    <p>Es muy estable. Solo actualízalo si yt-dlp lo pide explícitamente.</p>
+    
+    <h3>📌 cookies.txt → Regenerar cada 1-2 semanas</h3>
+    <p>Las cookies expiran. Si yt-dlp te vuelve a pedir login, exporta nuevas cookies.</p>
+  </section>
+
+  <!-- SEGURIDAD -->
+  <section id="seguridad">
+    <h2>🔒 Seguridad y Privacidad</h2>
+    
+    <h3>✅ ¿Son seguros estos archivos?</h3>
+    <p><strong>SÍ, 100% seguros</strong> porque:</p>
+    <ul>
+      <li>Son <strong>portables</strong> (no se instalan en Windows)</li>
+      <li><strong>NO modifican</strong> el registro de Windows</li>
+      <li><strong>NO consumen recursos</strong> cuando no los usas</li>
+      <li><strong>NO se ejecutan automáticamente</strong></li>
+      <li>Puedes <strong>borrarlos cuando quieras</strong> sin dejar rastro</li>
+      <li>Son de <strong>código abierto</strong> (revisados por miles de programadores)</li>
+    </ul>
+    
+    <h3>📦 ¿Qué son archivos "portables"?</h3>
+    <p>Son programas que solo funcionan cuando los ejecutas desde esa carpeta. No afectan tu sistema.</p>
+    
+    <table>
+      <tr><th>Característica</th><th>Programa instalado</th><th>Programa portable</th></tr>
+      <tr><td>Se instala en C:\Program Files</td><td>✅ Sí</td><td>❌ No</td></tr>
+      <tr><td>Modifica el registro</td><td>✅ Sí</td><td>❌ No</td></tr>
+      <tr><td>Se ejecuta al iniciar Windows</td><td>✅ A veces</td><td>❌ Nunca</td></tr>
+      <tr><td>Deja basura al desinstalar</td><td>✅ A veces</td><td>❌ No</td></tr>
+    </table>
+    
+    <div class="tip">
+      <strong>💡 Analogía:</strong> Los programas portables son como herramientas en una caja: solo las sacas cuando las necesitas. No modifican tu casa (tu PC).
+    </div>
   </section>
 
   <footer>
@@ -717,7 +783,6 @@ yt-dlp.exe --cookies-from-browser chrome "ENLACE"
 <button id="btnTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆</button>
 
 <script>
-  // Copiar comandos al portapapeles
   function copiar(btn) {
     const codeBlock = btn.parentElement;
     const text = codeBlock.textContent.replace('📋 Copiar', '').replace('✅ Copiado', '').trim();
@@ -731,7 +796,25 @@ yt-dlp.exe --cookies-from-browser chrome "ENLACE"
     });
   }
   
-  // Mostrar/ocultar botón volver arriba
+  function toggleMenu() {
+    const menuList = document.getElementById('menuList');
+    const btn = document.querySelector('.menu-toggle');
+    menuList.classList.toggle('open');
+    
+    if (menuList.classList.contains('open')) {
+      btn.textContent = '✕ Cerrar menú';
+    } else {
+      btn.textContent = '☰ Ver secciones';
+    }
+  }
+  
+  function closeMenu() {
+    const menuList = document.getElementById('menuList');
+    const btn = document.querySelector('.menu-toggle');
+    menuList.classList.remove('open');
+    btn.textContent = '☰ Ver secciones';
+  }
+  
   window.onscroll = function() {
     const btn = document.getElementById('btnTop');
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -740,27 +823,6 @@ yt-dlp.exe --cookies-from-browser chrome "ENLACE"
       btn.classList.remove('show');
     }
   };
-  // Abrir/cerrar menú en móvil
-  function toggleMenu() {
-    const menuList = document.getElementById('menuList');
-    const btn = document.querySelector('.menu-toggle');
-    menuList.classList.toggle('open');
-    
-    // Cambiar texto del botón
-    if (menuList.classList.contains('open')) {
-      btn.textContent = '✕ Cerrar menú';
-    } else {
-      btn.textContent = '☰ Ver secciones';
-    }
-  }
-  
-  // Cerrar menú al hacer clic en un enlace (móvil)
-  function closeMenu() {
-    const menuList = document.getElementById('menuList');
-    const btn = document.querySelector('.menu-toggle');
-    menuList.classList.remove('open');
-    btn.textContent = '☰ Ver secciones';
-  }   
 </script>
 
 </body>
