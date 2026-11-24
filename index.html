@@ -42,51 +42,110 @@
     padding: 20px;
   }
   
-  /* MENÚ INTERACTIVO */
+/* MENÚ INTERACTIVO - RESPONSIVE */
+nav.menu {
+  background: #2a2a2a;
+  border: 2px solid #D4AF37;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px 0;
+  box-shadow: 0 4px 15px rgba(212,175,55,0.2);
+}
+
+nav.menu h2 {
+  color: #D4AF37;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+nav.menu ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+nav.menu a {
+  color: #f0f0f0;
+  text-decoration: none;
+  padding: 8px 12px;
+  background: #3a3a3a;
+  border-left: 3px solid #C8102E;
+  border-radius: 4px;
+  transition: all 0.3s;
+  display: block;
+  font-size: 0.95em;
+}
+
+nav.menu a:hover {
+  background: #C8102E;
+  color: #D4AF37;
+  border-left-color: #D4AF37;
+  transform: translateX(5px);
+}
+
+/* BOTÓN HAMBURGUESA (solo visible en móvil) */
+.menu-toggle {
+  display: none;
+  background: #C8102E;
+  color: #D4AF37;
+  border: 2px solid #D4AF37;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: all 0.3s;
+}
+
+.menu-toggle:hover {
+  background: #D4AF37;
+  color: #C8102E;
+}
+
+/* ESTILOS PARA MÓVIL */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.8em; }
+  .container { padding: 10px; }
+  
+  /* Menú compacto en móvil */
   nav.menu {
-    background: #2a2a2a;
-    border: 2px solid #D4AF37;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 30px 0;
+    padding: 10px;
+    margin: 15px 0;
     position: sticky;
-    top: 10px;
+    top: 5px;
     z-index: 100;
-    box-shadow: 0 4px 15px rgba(212,175,55,0.2);
   }
   
   nav.menu h2 {
-    color: #D4AF37;
-    margin-bottom: 15px;
-    font-size: 1.3em;
-    text-align: center;
+    font-size: 1em;
+    margin-bottom: 10px;
   }
   
+  /* Mostrar botón hamburguesa */
+  .menu-toggle {
+    display: block;
+  }
+  
+  /* Ocultar lista por defecto */
   nav.menu ul {
-    list-style: none;
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  
+  /* Mostrar lista cuando tenga la clase "open" */
+  nav.menu ul.open {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 8px;
   }
   
   nav.menu a {
-    color: #f0f0f0;
-    text-decoration: none;
-    padding: 8px 12px;
-    background: #3a3a3a;
-    border-left: 3px solid #C8102E;
-    border-radius: 4px;
-    transition: all 0.3s;
-    display: block;
-    font-size: 0.95em;
+    padding: 6px 10px;
+    font-size: 0.85em;
   }
-  
-  nav.menu a:hover {
-    background: #C8102E;
-    color: #D4AF37;
-    border-left-color: #D4AF37;
-    transform: translateX(5px);
-  }
+}
   
   /* SECCIONES */
   section {
@@ -329,21 +388,22 @@
 <div class="container">
 
   <!-- MENÚ INTERACTIVO -->
-  <nav class="menu">
-    <h2>📌 Menú Rápido</h2>
-    <ul>
-      <li><a href="#intro">🎯 Introducción</a></li>
-      <li><a href="#paso1">📥 Paso 1: Descargar yt-dlp</a></li>
-      <li><a href="#paso2">📥 Paso 2: Descargar ffmpeg</a></li>
-      <li><a href="#paso3">📁 Paso 3: Preparar carpeta</a></li>
-      <li><a href="#paso4">⌨️ Paso 4: Abrir CMD</a></li>
-      <li><a href="#paso5">▶️ Paso 5: Descargar lista</a></li>
-      <li><a href="#avanzado">🚀 Comandos Avanzados</a></li>
-      <li><a href="#maestros">👑 Comandos Maestros</a></li>
-      <li><a href="#actualizar">🔄 Actualizaciones</a></li>
-      <li><a href="#errores">🛠️ Solución de Errores</a></li>
-    </ul>
-  </nav>
+<nav class="menu">
+  <h2>📌 Menú Rápido</h2>
+  <button class="menu-toggle" onclick="toggleMenu()">☰ Ver secciones</button>
+  <ul id="menuList">
+    <li><a href="#intro" onclick="closeMenu()">🎯 Introducción</a></li>
+    <li><a href="#paso1" onclick="closeMenu()">📥 Paso 1: Descargar yt-dlp</a></li>
+    <li><a href="#paso2" onclick="closeMenu()">📥 Paso 2: Descargar ffmpeg</a></li>
+    <li><a href="#paso3" onclick="closeMenu()">📁 Paso 3: Preparar carpeta</a></li>
+    <li><a href="#paso4" onclick="closeMenu()">⌨️ Paso 4: Abrir CMD</a></li>
+    <li><a href="#paso5" onclick="closeMenu()">▶️ Paso 5: Descargar lista</a></li>
+    <li><a href="#avanzado" onclick="closeMenu()">🚀 Comandos Avanzados</a></li>
+    <li><a href="#maestros" onclick="closeMenu()">👑 Comandos Maestros</a></li>
+    <li><a href="#actualizar" onclick="closeMenu()">🔄 Actualizaciones</a></li>
+    <li><a href="#errores" onclick="closeMenu()">🛠️ Solución de Errores</a></li>
+  </ul>
+</nav>
 
   <!-- INTRODUCCIÓN -->
   <section id="intro">
@@ -680,6 +740,27 @@ yt-dlp.exe --cookies-from-browser chrome "ENLACE"
       btn.classList.remove('show');
     }
   };
+  // Abrir/cerrar menú en móvil
+  function toggleMenu() {
+    const menuList = document.getElementById('menuList');
+    const btn = document.querySelector('.menu-toggle');
+    menuList.classList.toggle('open');
+    
+    // Cambiar texto del botón
+    if (menuList.classList.contains('open')) {
+      btn.textContent = '✕ Cerrar menú';
+    } else {
+      btn.textContent = '☰ Ver secciones';
+    }
+  }
+  
+  // Cerrar menú al hacer clic en un enlace (móvil)
+  function closeMenu() {
+    const menuList = document.getElementById('menuList');
+    const btn = document.querySelector('.menu-toggle');
+    menuList.classList.remove('open');
+    btn.textContent = '☰ Ver secciones';
+  }   
 </script>
 
 </body>
