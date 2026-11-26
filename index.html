@@ -395,6 +395,7 @@
     <ul id="menuList">
       <li><a href="#intro" onclick="closeMenu()">🎯 Introducción</a></li>
       <li><a href="#instalacion" onclick="closeMenu()">📥 Instalación Completa</a></li>
+      <li><a href="#uso-rapido" onclick="closeMenu()">🚀 Uso Rápido (CMD)</a></li>
       <li><a href="#basico" onclick="closeMenu()">▶️ Comando Básico</a></li>
       <li><a href="#cookies" onclick="closeMenu()">🍪 Solución: Cookies</a></li>
       <li><a href="#deno" onclick="closeMenu()">🧠 Solución: Deno</a></li>
@@ -432,13 +433,13 @@
     
     <h3><span class="paso">1</span> yt-dlp.exe (el programa principal)</h3>
     <ol>
-      <li>Entra a: <strong>https://github.com/yt-dlp/yt-dlp/releases/latest</strong></li>
+      <li>Ingresa a: <strong>https://github.com/yt-dlp/yt-dlp/releases/latest</strong></li>
       <li>Descarga: <strong>yt-dlp.exe</strong></li>
     </ol>
     
     <h3><span class="paso">2</span> ffmpeg.exe (une video + audio)</h3>
     <ol>
-      <li>Entra a: <strong>https://github.com/BtbN/FFmpeg-Builds/releases</strong></li>
+      <li>Ingresa a: <strong>https://github.com/BtbN/FFmpeg-Builds/releases</strong></li>
       <li>Descarga: <strong>ffmpeg-master-latest-win64-gpl.zip</strong></li>
       <li>Descomprime y copia <strong>ffmpeg.exe</strong> desde la carpeta <code>bin</code></li>
     </ol>
@@ -448,7 +449,7 @@
       <strong>⚠️ IMPORTANTE:</strong> Sin Deno, YouTube bloquea las descargas diciendo "Signature solving failed". Deno es el "cerebro" que yt-dlp necesita para descifrar las firmas de seguridad.
     </div>
     <ol>
-      <li>Entra a: <strong>https://github.com/denoland/deno/releases/latest</strong></li>
+      <li>Ingresa a: <strong>https://github.com/denoland/deno/releases/latest</strong></li>
       <li>Descarga: <strong>deno-x86_64-pc-windows-msvc.zip</strong></li>
       <li>Descomprime y copia <strong>deno.exe</strong></li>
     </ol>
@@ -464,6 +465,42 @@
         <li><code>deno.exe</code></li>
         <li><code>cookies.txt</code> (si lo necesitas)</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- USO RÁPIDO DESDE LA CARPETA -->
+  <section id="uso-rapido">
+    <h2>🚀 Uso Rápido desde la Carpeta (CMD)</h2>
+    <p>La forma más fácil y a prueba de errores para usar <code>yt-dlp</code> es abrir la consola de comandos (CMD) <strong>directamente en la carpeta donde tienes los archivos</strong>. Así te olvidas de escribir rutas larguísimas.</p>
+    
+    <h3><span class="paso">1</span> Abre la carpeta de trabajo</h3>
+    <p>Ingresa al explorador de archivos y abre la carpeta donde guardaste <code>yt-dlp.exe</code>, <code>ffmpeg.exe</code> y <code>deno.exe</code> (por ejemplo, una carpeta llamada <code>Descargas_DEVON</code> en tu escritorio).</p>
+
+    <h3><span class="paso">2</span> El truco de la barra de direcciones</h3>
+    <p>Haz clic en la <strong>barra de direcciones</strong> de arriba (donde aparece la ruta de la carpeta, ej: <code>C:\Users\TuNombre\Desktop\Descargas_DEVON</code>). Borra todo el texto, escribe <code>cmd</code> y presiona <strong>Enter</strong>.</p>
+    
+    <div class="code-block">
+      <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+cmd
+    </div>
+
+    <div class="tip">
+      <strong>💡 ¡Magia!</strong> Se va a abrir una ventana negra (Símbolo del sistema) que ya está "parada" dentro de esa carpeta. Todo lo que descargues con los comandos de abajo se va a guardar ahí mismo.
+    </div>
+
+    <h3><span class="paso">3</span> Ejecuta tu comando</h3>
+    <p>Ahora solo queda pegar el comando que quieras usar. Por ejemplo, para descargar el audio de un video en MP3:</p>
+    
+    <div class="code-block">
+      <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
+yt-dlp.exe -x --audio-format mp3 --audio-quality 0 "PEGA_EL_LINK_DEL_VIDEO_AQUI"
+    </div>
+
+    <h3>📂 ¿Dónde quedan los archivos?</h3>
+    <p>Los archivos descargados aparecerán automáticamente dentro de la misma carpeta donde abriste el CMD. Si usas el comando de playlists, se creará una subcarpeta con el nombre de la lista para mantener todo ordenado.</p>
+
+    <div class="warning">
+      <strong>⚠️ Ojo:</strong> No cierres la ventana negra del CMD hasta que la descarga termine. Si la cierras antes, la descarga se corta.
     </div>
   </section>
 
@@ -531,14 +568,14 @@ yt-dlp.exe --cookies-from-browser firefox "ENLACE"
       
       <h4>Paso 1: Instalar extensión en Edge/Chrome</h4>
       <ol>
-        <li>Entra a: <strong>https://chromewebstore.google.com/</strong></li>
+        <li>Ingresa a: <strong>https://chromewebstore.google.com/</strong></li>
         <li>Busca: <strong>"Get cookies.txt LOCALLY"</strong></li>
         <li>Instala la extensión (tiene 900,000+ usuarios, es segura)</li>
       </ol>
       
       <h4>Paso 2: Exportar cookies</h4>
       <ol>
-        <li>Abre YouTube en tu navegador y verifica que estás logueado</li>
+        <li>Abre YouTube en tu navegador y verifica que tienes la sesión iniciada</li>
         <li>Haz clic en el ícono de la extensión (galleta 🍪)</li>
         <li>Selecciona formato: <strong>Netscape</strong> (NO JSON)</li>
         <li>Haz clic en <strong>"Export"</strong></li>
